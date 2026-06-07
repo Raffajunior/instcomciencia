@@ -65,6 +65,55 @@ document.querySelectorAll('.nav a').forEach(link => {
   });
 });
 
+// ===== DROPDOWN MENU =====
+const dropdowns = document.querySelectorAll('.dropdown');
+
+dropdowns.forEach(dropdown => {
+  const toggle = dropdown.querySelector('a');
+  const menu = dropdown.querySelector('.dropdown-menu');
+
+  // Abrir/fechar dropdown ao clicar
+  if (toggle) {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Fechar outros dropdowns
+      dropdowns.forEach(d => {
+        if (d !== dropdown) {
+          d.classList.remove('open');
+          const m = d.querySelector('.dropdown-menu');
+          if (m) m.style.display = '';
+        }
+      });
+
+      // Toggle dropdown atual
+      dropdown.classList.toggle('open');
+      menu.style.display = dropdown.classList.contains('open') ? 'flex' : '';
+    });
+  }
+
+  // Fechar dropdown ao clicar em um link dentro dele
+  if (menu) {
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+        menu.style.display = '';
+      });
+    });
+  }
+});
+
+// Fechar dropdown ao clicar fora
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('open');
+      const menu = dropdown.querySelector('.dropdown-menu');
+      if (menu) menu.style.display = '';
+    });
+  }
+});
+
 // ===== CONTACT FORM =====
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
