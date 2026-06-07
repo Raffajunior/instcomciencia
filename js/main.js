@@ -66,51 +66,45 @@ document.querySelectorAll('.nav a').forEach(link => {
 });
 
 // ===== DROPDOWN MENU =====
-const dropdowns = document.querySelectorAll('.dropdown');
+function closeAllDropdowns() {
+  document.querySelectorAll('.dropdown').forEach(d => {
+    d.classList.remove('open');
+    const m = d.querySelector('.dropdown-menu');
+    if (m) m.style.display = '';
+  });
+}
 
-dropdowns.forEach(dropdown => {
-  const toggle = dropdown.querySelector('a');
-  const menu = dropdown.querySelector('.dropdown-menu');
+document.querySelectorAll('.dropdown > a').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const dropdown = toggle.closest('.dropdown');
+    const isOpen = dropdown.classList.contains('open');
+    
+    // Fechar todos os outros dropdowns
+    closeAllDropdowns();
+    
+    // Se não estava aberto, abre
+    if (!isOpen) {
+      dropdown.classList.add('open');
+      const menu = dropdown.querySelector('.dropdown-menu');
+      if (menu) menu.style.display = 'flex';
+    }
+  });
+});
 
-  // Abrir/fechar dropdown ao clicar
-  if (toggle) {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Fechar outros dropdowns
-      dropdowns.forEach(d => {
-        if (d !== dropdown) {
-          d.classList.remove('open');
-          const m = d.querySelector('.dropdown-menu');
-          if (m) m.style.display = '';
-        }
-      });
-
-      // Toggle dropdown atual
-      dropdown.classList.toggle('open');
-      menu.style.display = dropdown.classList.contains('open') ? 'flex' : '';
-    });
-  }
-
-  // Fechar dropdown ao clicar em um link dentro dele
-  if (menu) {
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        dropdown.classList.remove('open');
-        menu.style.display = '';
-      });
-    });
-  }
+// Fechar dropdown ao clicar em item dentro dele
+document.querySelectorAll('.dropdown-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    closeAllDropdowns();
+  });
 });
 
 // Fechar dropdown ao clicar fora
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.dropdown')) {
-    dropdowns.forEach(dropdown => {
-      dropdown.classList.remove('open');
-      const menu = dropdown.querySelector('.dropdown-menu');
-      if (menu) menu.style.display = '';
-    });
+    closeAllDropdowns();
   }
 });
 
