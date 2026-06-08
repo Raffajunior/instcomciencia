@@ -1,60 +1,61 @@
-# Instituto ComCiência — Site Estático
+# Instituto ComCiência - Clone estático
 
-Clone estático do site [Instituto Com Ciência](http://instcomciencia.web2f02.uni5.net/), recriado em HTML/CSS/JS puro.
+Clone estático do site Joomla publicado em:
 
-## Páginas
+http://instcomciencia.web2f02.uni5.net/index.php
 
-- `index.html` — Home com slider automático
-- `pages/sobre.html` — Sobre a empresa
-- `pages/servicos.html` — Serviços oferecidos
-- `pages/depoimentos.html` — Depoimentos de clientes
-- `pages/profissionais.html` — Nossa equipe
-- `pages/contato.html` — Formulário de contato
-- `pages/workshop-crianca.html` — Curso Workshop Criança
-- `pages/workshop-vivencias.html` — Curso Workshop Vivências
-- `pages/consciencia-sistemica.html` — Consciência Sistêmica
-- `pages/constelacao-familiar.html` — Constelação Familiar
-- `pages/educacao-sistemica.html` — Educação Sistêmica
+## Estrutura principal
 
-## Estrutura
+- `index.html` - Home
+- `depoimentos-home/` - Depoimentos
+- `sobre/` - Sobre
+- `servicos/` - Serviços
+- `profissionais/` - Profissionais
+- `contato/` - Contato
+- `cursos-de-formacao/` - Páginas de cursos
+- `inscricao-workshop/` - Formulário do workshop
+- `images/`, `templates/`, `components/`, `media/` - Assets copiados do Joomla
+- `index.php` - Roteador opcional para manter URLs antigas em hospedagem PHP
+- `tools/mirror-site.mjs` - Script para refazer o espelhamento do site antigo
 
-```
-instcomciencia/
-├── index.html
-├── css/style.css
-├── js/main.js
-├── pages/
-│   ├── sobre.html
-│   ├── servicos.html
-│   ├── depoimentos.html
-│   ├── profissionais.html
-│   ├── contato.html
-│   ├── workshop-crianca.html
-│   ├── workshop-vivencias.html
-│   ├── consciencia-sistemica.html
-│   ├── constelacao-familiar.html
-│   └── educacao-sistemica.html
-└── README.md
+## Rodar localmente
+
+```bash
+node server.js
 ```
 
-## Como usar
+Depois acesse:
 
-1. Abra `index.html` no navegador para visualizar o site localmente
-2. Para publicar: suba em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, etc.)
+```text
+http://localhost:8000
+```
 
-## Recursos
+## Atualizar o espelho
 
-- Design responsivo (mobile-friendly)
-- Slider automático na página inicial
-- Menu de navegação com dropdown
-- Formulário de contato
-- CSS e JavaScript puros, sem dependências de build
-- Ícones do Font Awesome
+Se o site antigo ainda mudar antes da migração, rode:
 
-## Desenvolvimento
+```bash
+node tools/mirror-site.mjs
+```
 
-O projeto usa apenas HTML5, CSS3 e JavaScript vanilla. Não requer build tools ou dependências npm.
+O script baixa novamente as páginas principais e os assets do domínio antigo, reescrevendo os links internos para as novas URLs estáticas.
 
-## Autor
+## Deploy
 
-Instituto Com Ciência — Formação Humana Sistêmica
+Para uma hospedagem comum, suba todo o conteúdo deste repositório para a raiz pública do domínio.
+
+As URLs novas usam caminhos limpos, por exemplo:
+
+- `/sobre/`
+- `/contato/`
+- `/cursos-de-formacao/consciencia-sistemica/`
+
+Se a hospedagem tiver PHP, o arquivo `index.php` também atende URLs antigas do Joomla, como:
+
+- `/index.php/sobre`
+- `/index.php/contato`
+- `/index.php/cursos-de-formacao/workshop`
+
+## Formulários
+
+Os formulários foram preservados visualmente, mas o envio original dependia do Joomla/RSForm no servidor antigo. Antes de colocar em produção, conecte os formulários a uma solução de envio, como PHP mail, SMTP autenticado ou um serviço externo.

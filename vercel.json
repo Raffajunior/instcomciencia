@@ -1,0 +1,61 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/depoimentos-home",
+      "destination": "/depoimentos-home/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/sobre",
+      "destination": "/sobre/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/cursos-de-formacao/workshop",
+      "destination": "/cursos-de-formacao/workshop/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/cursos-de-formacao/workshop-2",
+      "destination": "/cursos-de-formacao/workshop-2/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/cursos-de-formacao/consciencia-sistemica",
+      "destination": "/cursos-de-formacao/consciencia-sistemica/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/cursos-de-formacao/constelacao-familiar",
+      "destination": "/cursos-de-formacao/constelacao-familiar/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/cursos-de-formacao/educacao-sistemica",
+      "destination": "/cursos-de-formacao/educacao-sistemica/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/servicos",
+      "destination": "/servicos/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/profissionais",
+      "destination": "/profissionais/",
+      "permanent": true
+    },
+    {
+      "source": "/index.php/contato",
+      "destination": "/contato/",
+      "permanent": true
+    }
+  ]
+}
