@@ -142,17 +142,36 @@
     .hero-photo.loaded { transform: scale(1); }
 
     /* botanical SVG decoration */
-    .hero-botanical {
-      position: absolute; z-index: 2;
-      right: 6%; top: 18%;
-      opacity: .18;
-    }
+    .hero-botanical { display: none; }
+
     .hero-content {
       position: relative; z-index: 3;
       padding: 0 32px;
       max-width: 1160px;
       margin: 0 auto;
       width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 48px;
+    }
+    .hero-watermark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-watermark img {
+      width: 72%;
+      max-width: 340px;
+      opacity: .13;
+      filter: brightness(0) invert(1);
+      user-select: none;
+      pointer-events: none;
+    }
+    .hero-text { /* text column — right */ }
+    @media (max-width: 860px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-watermark { display: none; }
     }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 12px;
@@ -983,23 +1002,30 @@
     </div>
 
     <div class="hero-content container">
-      <div class="hero-eyebrow">
-        <div class="hero-eyebrow-line"></div>
-        <span>Brasília — DF · Desde 2018</span>
+      <!-- esquerda: marca d'água -->
+      <div class="hero-watermark">
+        <img src="/images/logo.png" alt="" />
       </div>
-      <h1 class="hero-title">
-        <span class="script">Consciência</span>
-        <span class="serif">encontra</span>
-        <span class="accent">Transformação</span>
-      </h1>
-      <div class="hero-sub">
-        Atendimento Psicanalítico, Constelação Familiar e Formação Sistêmica
-        <span>Formação Humana · Abordagem Integrativa · Vivências Presenciais</span>
+      <!-- direita: texto -->
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span>Brasília — DF · Desde 2018</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="script">Consciência</span>
+          <span class="serif">encontra</span>
+          <span class="accent">Transformação</span>
+        </h1>
+        <div class="hero-sub">
+          Atendimento Psicanalítico, Constelação Familiar e Formação Sistêmica
+          <span>Formação Humana · Abordagem Integrativa · Vivências Presenciais</span>
+        </div>
+        <a href="#contato" class="hero-btn">
+          Agendar uma consulta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <a href="#contato" class="hero-btn">
-        Agendar uma consulta
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
     </div>
 
     <div class="hero-scroll">
