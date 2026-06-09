@@ -142,47 +142,22 @@
     .hero-photo.loaded { transform: scale(1); }
 
     /* botanical SVG decoration */
-    .hero-botanical { display: none; }
-
+    .hero-botanical {
+      position: absolute; z-index: 2;
+      right: 6%; top: 18%;
+      opacity: .18;
+    }
     .hero-content {
       position: relative; z-index: 3;
       padding: 0 32px;
       max-width: 1160px;
       margin: 0 auto;
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 48px;
-    }
-    .hero-watermark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-watermark img {
-      width: 100%;
-      max-width: 100%;
-      opacity: .28;
-      mix-blend-mode: multiply;
-      user-select: none;
-      pointer-events: none;
-    }
-    .hero-text {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-    @media (max-width: 860px) {
-      .hero-content { grid-template-columns: 1fr; }
-      .hero-watermark { display: none; }
     }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 12px;
       margin-bottom: 20px;
     }
-    .hero-text .hero-eyebrow { flex-direction: row-reverse; }
     .hero-eyebrow-line { width: 40px; height: 1px; background: rgba(255,255,255,.5); }
     .hero-eyebrow span {
       font-size: .72rem;
@@ -1008,30 +983,23 @@
     </div>
 
     <div class="hero-content container">
-      <!-- esquerda: marca d'água -->
-      <div class="hero-watermark">
-        <img src="/images/brand-identity.png" alt="" />
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Brasília — DF · Desde 2018</span>
       </div>
-      <!-- direita: texto -->
-      <div class="hero-text">
-        <div class="hero-eyebrow">
-          <div class="hero-eyebrow-line"></div>
-          <span>Brasília — DF · Desde 2018</span>
-        </div>
-        <h1 class="hero-title">
-          <span class="script">Consciência</span>
-          <span class="serif">encontra</span>
-          <span class="accent">Transformação</span>
-        </h1>
-        <div class="hero-sub">
-          Atendimento Psicanalítico, Constelação Familiar e Formação Sistêmica
-          <span>Formação Humana · Abordagem Integrativa · Vivências Presenciais</span>
-        </div>
-        <a href="#contato" class="hero-btn">
-          Agendar uma consulta
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <h1 class="hero-title">
+        <span class="script">Consciência</span>
+        <span class="serif">encontra</span>
+        <span class="accent">Transformação</span>
+      </h1>
+      <div class="hero-sub">
+        Atendimento Psicanalítico, Constelação Familiar e Formação Sistêmica
+        <span>Formação Humana · Abordagem Integrativa · Vivências Presenciais</span>
       </div>
+      <a href="#contato" class="hero-btn">
+        Agendar uma consulta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
     <div class="hero-scroll">
