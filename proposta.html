@@ -144,45 +144,39 @@
     /* botanical SVG decoration */
     .hero-botanical { display: none; }
 
+    .hero-content {
+      position: relative; z-index: 3;
+      padding: 0 32px;
+      max-width: 1160px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 48px;
+    }
     .hero-watermark {
-      position: absolute;
-      left: 0; top: 0;
-      width: 50%; height: 100%;
-      z-index: 2;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .hero-watermark img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+      max-width: 100%;
       opacity: .28;
       mix-blend-mode: multiply;
       user-select: none;
       pointer-events: none;
     }
-    .hero-content {
-      position: relative; z-index: 3;
-      width: 100%;
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 64px 0 0;
-      display: flex;
-      justify-content: flex-end;
-    }
     .hero-text {
-      width: 50%;
-      padding-right: 32px;
       text-align: right;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
     }
     @media (max-width: 860px) {
+      .hero-content { grid-template-columns: 1fr; }
       .hero-watermark { display: none; }
-      .hero-content { padding: 0 24px; justify-content: center; }
-      .hero-text { width: 100%; padding: 0; text-align: left; align-items: flex-start; }
-      .hero-text .hero-eyebrow { flex-direction: row; }
     }
     .hero-eyebrow {
       display: flex; align-items: center; gap: 12px;
@@ -1013,12 +1007,11 @@
       </svg>
     </div>
 
-    <!-- esquerda: identidade visual full-height -->
-    <div class="hero-watermark">
-      <img src="/images/brand-identity.png" alt="" />
-    </div>
-
     <div class="hero-content container">
+      <!-- esquerda: marca d'água -->
+      <div class="hero-watermark">
+        <img src="/images/brand-identity.png" alt="" />
+      </div>
       <!-- direita: texto -->
       <div class="hero-text">
         <div class="hero-eyebrow">
